@@ -2,7 +2,7 @@
 <html lang="zh-HK">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>UPS 6-Side Check 3D 遊戲島 by 【Mandy】 — 47 座航空貨櫃闖關島嶼</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -336,6 +336,17 @@
       }
     }
     @media (pointer: coarse) {
+      html, body {
+        width: 100% !important;
+        height: 100dvh !important;
+        max-width: 100vw !important;
+        overflow: hidden !important;
+        touch-action: manipulation;
+        -webkit-text-size-adjust: 100%;
+      }
+      input, textarea, select {
+        font-size: 16px !important;
+      }
       .backdrop-blur-md,
       .backdrop-blur-sm,
       .backdrop-blur-xs,
@@ -1182,6 +1193,12 @@
 
   
   <div id="canvas-container" class="absolute inset-0 w-full h-full z-0 cursor-grab active:cursor-grabbing"></div>
+  <div id="central-game-banner-hud" class="fixed top-0 left-0 z-[12] pointer-events-none select-none opacity-0" style="will-change: transform; transform-origin: center center;">
+    <div style="background: linear-gradient(135deg, #f7ecf0 0%, #f0dce5 50%, #e7ced9 100%); border: 2.5px solid #b85d7c; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.9), 0 4px 14px rgba(45, 25, 34, 0.22); border-radius: 9999px; padding: 6px 18px; text-align: center; white-space: nowrap; font-family: Inter, 'Noto Sans TC', sans-serif; line-height: 1.25;">
+      <div style="color: #2d1922; font-weight: 900; font-size: 14px; letter-spacing: 0.01em;">UPS 6-SIDE CHECK 遊戲島</div>
+      <div style="color: #7a2846; font-weight: 900; font-size: 10.5px; margin-top: 1px;">by 【Mandy】 • 47 座貨櫃島 6-Side Check</div>
+    </div>
+  </div>
 
   
   <div id="hover-tooltip" class="fixed pointer-events-none z-30 hidden px-3.5 py-2 rounded-2xl glass-panel border-2 border-sky-300 text-xs shadow-xl transition-opacity duration-150">
@@ -1612,8 +1629,8 @@
       badgeColor: "#FFB500",
       description: "UPS 6-Side Check 六面檢查實物檢驗系統。",
       bullets: [
-        "六面全檢重點：必須完整檢視包裹正面、背面、左側、右側、頂面與底面（Complete 6-Side Check）。",
-        "異常處置：如發現任何禁運危險品標籤或未授權包裹，立即攔截並通知主管或交由 Acceptance Auditor 審查。"
+        "六面全檢重點：必須完整檢視包裹正面、背面、左側、右側、頂面與底面。",
+        "異常處理重點：如發現任何危險品標籤（不論該標籤是否完整）或疑似危險品訊息（如UN號碼），請立即停止運送及通知主管。"
       ]
     };
 
@@ -1771,11 +1788,11 @@
             1.52
         ],
         "isCombined2in1": false,
-        "ans": "audit",
+        "ans": "reject",
         "name": "第 08 關 (AMJ-08)",
         "shortTitle": "第 08 關 • 貨櫃島",
         "sourceTag": "第 08 關 • 六面檢查",
-        "ansLabel": "特殊核驗",
+        "ansLabel": "嚴禁裝入",
         "standardRef": "AMJ-08 • 六面檢查規範"
     },
     {
@@ -1891,11 +1908,11 @@
             1.6
         ],
         "isCombined2in1": false,
-        "ans": "audit",
+        "ans": "reject",
         "name": "第 14 關 (AMJ-14)",
         "shortTitle": "第 14 關 • 貨櫃島",
         "sourceTag": "第 14 關 • 六面檢查",
-        "ansLabel": "特殊核驗",
+        "ansLabel": "嚴禁裝入",
         "standardRef": "AMJ-14 • 六面檢查規範"
     },
     {
@@ -2011,11 +2028,11 @@
             1.75
         ],
         "isCombined2in1": false,
-        "ans": "audit",
+        "ans": "reject",
         "name": "第 20 關 (AMJ-20)",
         "shortTitle": "第 20 關 • 貨櫃島",
         "sourceTag": "第 20 關 • 六面檢查",
-        "ansLabel": "特殊核驗",
+        "ansLabel": "嚴禁裝入",
         "standardRef": "AMJ-20 • 六面檢查規範"
     },
     {
@@ -4112,10 +4129,10 @@
       24: { face: "front", viewPreset: "front", circle2D: [145, 95, 110],  faceLabel: "正面左上脫模劑與右側塗銷處", shortExplain: "紙箱印有化學品用途字樣，廠商名稱遭塗銷，需查核文件確認貨物性質。" },
       25: { face: "front", viewPreset: "front", circle2D: [125, 315, 105], faceLabel: "正面左下 UN 3480 標記", shortExplain: "包裝標示 UN 3480（PI965），顯示為純鋰離子電池貨件。" },
       26: { face: "front", viewPreset: "front", circle2D: [265, 255, 145], faceLabel: "正面合規 UN 3481 與 Class 9", shortExplain: "外箱貼有 UN 3481 及第9類標誌，顯示涉及鋰電池產品，需 DG 團隊確認。" },
-      27: { face: "front", viewPreset: "front", circle2D: [260, 245, 145], faceLabel: "正面帶 Y 字空運限量標與 Class 3", shortExplain: "外箱貼有「Y」字空運限量危險品標誌及 UN 1263 易燃液體標籤，需 DG 團隊確認。" },
-      28: { face: "front", viewPreset: "front", circle2D: [310, 245, 145], faceLabel: "正面合規 UN 1845 乾冰標記", shortExplain: "外箱貼有第9類標誌及 UN 1845 乾冰標示（2.5kg），需 DG 團隊確認。" },
+      27: { face: "front", viewPreset: "front", circle2D: [260, 245, 145], faceLabel: "正面帶 Y 字空運限量標與 Class 3", shortExplain: "外箱貼有「Y」字空運限量危險品標誌、UN1263及第3類易燃液體標籤，顯示貨物涉及危險品。" },
+      28: { face: "front", viewPreset: "front", circle2D: [310, 245, 145], faceLabel: "正面 UN 1845 乾冰標記", shortExplain: "外箱貼有第9類危險標誌及UN1845 乾冰標示（2.5kg)，顯示貨物涉及危險品。" },
       29: { face: "front", viewPreset: "front", circle2D: [260, 240, 130], faceLabel: "正面合規 E 字微量危險品標", shortExplain: "外箱貼有「E」豁免數量標誌，並標示 Class 3、UN 1170 及寄件人資訊，需 DG 團隊確認。" },
-      30: { face: "front", viewPreset: "front", circle2D: [265, 250, 145], faceLabel: "正面合規 UN 3091 與 Class 9", shortExplain: "外箱貼有 UN 3091 鋰金屬電池標籤及第9類標誌，需 DG 團隊確認。" },
+      30: { face: "front", viewPreset: "front", circle2D: [265, 250, 145], faceLabel: "正面 UN 3091 與 Class 9", shortExplain: "外箱貼有UN 3091 鋰金屬電池標籤及第9類標誌，顯示貨物涉及危險品。" },
       101: { face: "none", viewPreset: "iso", shortExplain: "以上列出的三種物質（易燃液體、腐蝕性物質、鋰電池）皆屬於九大危險品類別，全部被視為危險品。", isPass: true },
       102: { face: "none", viewPreset: "iso", shortExplain: "檢查或裝載所有空運包裹時均須執行六面檢查，以找出潛在危險品清單上的危險貨物標記、標籤及疑似危險品。", isPass: true },
       103: { face: "none", viewPreset: "iso", shortExplain: "執行六面檢查時，必須同時留意包裹是否有損壞、滲漏或疑似危險品字眼，以辨識可能內含危險品的包裹。", isPass: true },
@@ -5551,17 +5568,76 @@
           sceneWrap.add(base, post, sensorHead);
         });
       } else if (id === 3) {
-        const tray = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.05, 2.1), TEST11_MAT.darkAnodized);
-        tray.position.set(0.15, TEST11_DECK_Y + 0.05, 0.15);
-        const puddle = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.52, 0.56, 0.02, 28),
-          new THREE.MeshStandardMaterial({ color: 0x3B120C, roughness: 0.08 })
-        );
-        puddle.position.set(0.52, TEST11_DECK_Y + 0.078, 0.88);
+        // Blender 5.3 QA 級工業防漏盛漏盤（中空圍邊＋透明檢視底板＋防滑腳墊＋立體滲漏液滴，零穿模、零 Z-fighting）
+        const trayGroup = new THREE.Group();
+        const tCx = 0.12, tCz = 0.14;
+        const tW = 2.16, tD = 2.16, wallT = 0.06, wallH = 0.11;
+        const wallY = TEST11_DECK_Y + 0.035; // 範圍 [DECK-0.02, DECK+0.09]
+        const trimY = TEST11_DECK_Y + 0.098;
+
+        // 1. 四面中空陽極鋁合金防漏圍邊（內徑完全包覆紙箱不穿模）
+        const wallFront = new THREE.Mesh(new THREE.BoxGeometry(tW, wallH, wallT), TEST11_MAT.darkAnodized);
+        wallFront.position.set(tCx, wallY, tCz + tD / 2 - wallT / 2);
+        const wallBack = new THREE.Mesh(new THREE.BoxGeometry(tW, wallH, wallT), TEST11_MAT.darkAnodized);
+        wallBack.position.set(tCx, wallY, tCz - tD / 2 + wallT / 2);
+        const innerD = tD - wallT * 2;
+        const wallLeft = new THREE.Mesh(new THREE.BoxGeometry(wallT, wallH, innerD), TEST11_MAT.darkAnodized);
+        wallLeft.position.set(tCx - tW / 2 + wallT / 2, wallY, tCz);
+        const wallRight = new THREE.Mesh(new THREE.BoxGeometry(wallT, wallH, innerD), TEST11_MAT.darkAnodized);
+        wallRight.position.set(tCx + tW / 2 - wallT / 2, wallY, tCz);
+
+        // 2. 工業安全黃頂部警示邊條
+        const trimFront = new THREE.Mesh(new THREE.BoxGeometry(tW + 0.008, 0.016, wallT + 0.008), TEST11_MAT.paintedYellow);
+        trimFront.position.set(tCx, trimY, tCz + tD / 2 - wallT / 2);
+        const trimBack = new THREE.Mesh(new THREE.BoxGeometry(tW + 0.008, 0.016, wallT + 0.008), TEST11_MAT.paintedYellow);
+        trimBack.position.set(tCx, trimY, tCz - tD / 2 + wallT / 2);
+        const trimLeft = new THREE.Mesh(new THREE.BoxGeometry(wallT + 0.008, 0.016, innerD), TEST11_MAT.paintedYellow);
+        trimLeft.position.set(tCx - tW / 2 + wallT / 2, trimY, tCz);
+        const trimRight = new THREE.Mesh(new THREE.BoxGeometry(wallT + 0.008, 0.016, innerD), TEST11_MAT.paintedYellow);
+        trimRight.position.set(tCx + tW / 2 - wallT / 2, trimY, tCz);
+
+        // 3. 高透光檢視強化底板（位於紙箱底面下方 6mm，底面檢視可完全看清滲濕痕跡）
+        const clearBaseMat = new THREE.MeshStandardMaterial({
+          color: 0xdbeafe,
+          transparent: true,
+          opacity: 0.16,
+          roughness: 0.12,
+          metalness: 0.15,
+          depthWrite: false
+        });
+        const clearBase = new THREE.Mesh(new THREE.BoxGeometry(tW - wallT * 2, 0.014, innerD), clearBaseMat);
+        clearBase.position.set(tCx, TEST11_DECK_Y - 0.013, tCz);
+
+        // 4. 四角防滑橡膠腳墊
+        [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([sx, sz]) => {
+          const foot = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.024, 0.18), TEST11_MAT.charcoalRubber);
+          foot.position.set(tCx + sx * (tW / 2 - 0.11), TEST11_DECK_Y - 0.032, tCz + sz * (tD / 2 - 0.11));
+          trayGroup.add(foot);
+        });
+
+        // 5. 高光深琥珀滲漏液體泊與立體水珠（自然由箱底前右縫隙流出至盛漏盤）
+        const spillMat = new THREE.MeshStandardMaterial({
+          color: 0x3b120c,
+          roughness: 0.06,
+          metalness: 0.18
+        });
+        const puddleMain = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.40, 0.014, 28), spillMat);
+        puddleMain.position.set(0.46, TEST11_DECK_Y + 0.002, 0.89);
+        const puddleLobe = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.25, 0.012, 22), spillMat);
+        puddleLobe.position.set(0.84, TEST11_DECK_Y + 0.001, 0.66);
+        trayGroup.add(wallFront, wallBack, wallLeft, wallRight, trimFront, trimBack, trimLeft, trimRight, clearBase, puddleMain, puddleLobe);
+
+        [[0.08, 0.99, 0.052], [0.88, 0.96, 0.044], [0.99, 0.36, 0.038]].forEach(([dx, dz, dr]) => {
+          const drop = new THREE.Mesh(new THREE.SphereGeometry(dr, 16, 12), spillMat);
+          drop.scale.set(1.0, 0.32, 1.0);
+          drop.position.set(dx, TEST11_DECK_Y + 0.004, dz);
+          trayGroup.add(drop);
+        });
+
         const tornFlap = new THREE.Mesh(new THREE.BoxGeometry(0.56, 0.03, 0.46), TEST11_MAT.cardboardEdge);
         tornFlap.position.set(0.62, boxCenterY + 0.82, 0.58);
         tornFlap.rotation.set(0.32, 0.18, -0.35);
-        sceneWrap.add(tray, puddle, tornFlap);
+        sceneWrap.add(trayGroup, tornFlap);
       } else if (id === 4) {
         const topY = TEST11_DECK_Y + 0.34;
         const p1 = createTest11Pedestal(-1.72, 0.65, topY);
@@ -8134,67 +8210,12 @@
     runwayGroup.add(windsockPoleGroup);
 
 
-    function createGameIsland3DBanner() {
-      const c = document.createElement("canvas");
-      const bScale = IS_MOBILE_DEVICE ? 1 : 2;
-      c.width = 1024 * bScale;
-      c.height = 256 * bScale;
-      const ctx = c.getContext("2d");
-      ctx.scale(bScale, bScale);
-
-      // 莫蘭迪灰粉玫瑰底色（與答題介面統一配色，溫潤高雅且高對比清晰）
-      const grad = ctx.createLinearGradient(0, 16, 1024, 240);
-      grad.addColorStop(0, "#f7ecf0");
-      grad.addColorStop(0.5, "#f0dce5");
-      grad.addColorStop(1, "#e7ced9");
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.roundRect(16, 16, 992, 224, 112);
-      ctx.fill();
-
-      // 外層深莓果玫瑰金邊框 + 內層柔白高光框線
-      ctx.lineWidth = 10;
-      ctx.strokeStyle = "#b85d7c";
-      ctx.stroke();
-
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
-      ctx.beginPath();
-      ctx.roundRect(24, 24, 976, 208, 104);
-      ctx.stroke();
-
-      // 主標題：高對比深莓果啡黑字體
-      ctx.fillStyle = "#2d1922";
-      ctx.font = "900 58px Inter, 'Noto Sans TC', sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText("UPS 6-SIDE CHECK 遊戲島", 512, 96);
-
-      // 副標題：清晰深玫瑰酒紅字體
-      ctx.fillStyle = "#7a2846";
-      ctx.font = "900 43px Inter, 'Noto Sans TC', sans-serif";
-      ctx.fillText("by 【Mandy】 • 47 座貨櫃島 6-Side Check", 512, 174);
-
-      const tex = new THREE.CanvasTexture(c);
-      tex.colorSpace = THREE.SRGBColorSpace;
-      tex.minFilter = THREE.LinearFilter;
-      tex.magFilter = THREE.LinearFilter;
-      tex.anisotropy = maxAniso;
-      tex.generateMipmaps = false;
-      tex.needsUpdate = true;
-      const mat = new THREE.SpriteMaterial({
-        map: tex,
-        transparent: true,
-        fog: false,
-        toneMapped: false
-      });
-      const sprite = new THREE.Sprite(mat);
-      sprite.scale.set(13.5, 3.38, 1);
-      sprite.position.set(0, 11.2, 0);
-      return sprite;
-    }
-    const centralGameBanner = createGameIsland3DBanner();
+    // 飛機上方 3D 橫幅錨點（配合原生 Retina 向量標籤即時 3D 投影，保持原外觀與字體且任何距離都極致清晰）
+    const centralGameBanner = new THREE.Object3D();
+    centralGameBanner.position.set(0, 11.2, 0);
     centralIslandGroup.add(centralGameBanner);
+    const _bannerWorldPos = new THREE.Vector3();
+    const _bannerHudEl = document.getElementById("central-game-banner-hud");
 
     const aircraftPivot = new THREE.Group();
     aircraftPivot.position.set(0, 5.4, 0);
@@ -10169,13 +10190,30 @@
         });
       }
     });
-    window.addEventListener("orientationchange", () => {
-      setTimeout(() => {
-        syncMobilePanelBounds();
-        if (stageCargo360 && !document.getElementById("modal-cargo-360-quiz").classList.contains("hidden")) {
-          stageCargo360.resize();
+    function resetMobileViewportScroll() {
+      if (!IS_MOBILE_DEVICE) return;
+      try {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      } catch (_) {}
+      syncMobilePanelBounds();
+      if (stageCargo360 && !document.getElementById("modal-cargo-360-quiz").classList.contains("hidden")) {
+        stageCargo360.resize();
+      }
+    }
+    if (IS_MOBILE_DEVICE) {
+      document.addEventListener("focusout", (e) => {
+        const tag = e.target && e.target.tagName;
+        if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
+          setTimeout(resetMobileViewportScroll, 80);
+          setTimeout(resetMobileViewportScroll, 280);
         }
-      }, 180);
+      });
+    }
+    window.addEventListener("orientationchange", () => {
+      setTimeout(resetMobileViewportScroll, 120);
+      setTimeout(resetMobileViewportScroll, 320);
     });
     setTimeout(syncMobilePanelBounds, 250);
 
@@ -10334,6 +10372,10 @@
       if (container) {
         const wantDisp = (isImgZoomOpen || (IS_MOBILE_DEVICE && isQuizOpen)) ? "none" : "";
         if (container.style.display !== wantDisp) container.style.display = wantDisp;
+      }
+      if (_bannerHudEl) {
+        const wantHudDisp = (isQuizOpen || isBlockingModalOpen) ? "none" : "";
+        if (_bannerHudEl.style.display !== wantHudDisp) _bannerHudEl.style.display = wantHudDisp;
       }
 
       timer.update();
@@ -10809,6 +10851,26 @@
 
       orbitSystemGroup.rotation.y = 0;
 
+      // 將飛機上方 3D 錨點以真實透視投影至原生 Retina 向量橫幅（全程隨遠近縮放且維持高清晰度）
+      if (centralGameBanner && _bannerHudEl) {
+        centralGameBanner.getWorldPosition(_bannerWorldPos);
+        const camDist = Math.max(8, camera.position.distanceTo(_bannerWorldPos));
+        _bannerWorldPos.project(camera);
+        const inFront = _bannerWorldPos.z > -1 && _bannerWorldPos.z < 1;
+        if (inFront) {
+          const sx = (_bannerWorldPos.x * 0.5 + 0.5) * window.innerWidth;
+          const sy = (-_bannerWorldPos.y * 0.5 + 0.5) * window.innerHeight;
+          const tanHalfFov = Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5));
+          const projectedWorldPx = (13.5 * window.innerHeight) / (2 * camDist * tanHalfFov);
+          const baseCssWidth = _bannerHudEl.offsetWidth || 236;
+          const hudScale = THREE.MathUtils.clamp(projectedWorldPx / baseCssWidth, 0.34, 1.45);
+          _bannerHudEl.style.opacity = "1";
+          _bannerHudEl.style.transform = `translate3d(${sx.toFixed(1)}px, ${sy.toFixed(1)}px, 0) translate(-50%, -50%) scale(${hudScale.toFixed(3)})`;
+        } else {
+          _bannerHudEl.style.opacity = "0";
+        }
+      }
+
       islandNodes.forEach((node) => {
         const isSel = node.id === selectedIslandId;
         const bobOffset = Math.sin(elapsed * 1.65 + node.phase) * 0.38 + Math.cos(elapsed * 0.82 + node.phase * 1.3) * 0.12;
@@ -11017,30 +11079,68 @@
       return false;
     }
 
+    let _memOwnerPass = null;
+    let _memOwnerPassTs = 0;
+    try {
+      const _initPass = localStorage.getItem(STORAGE_KEY_OWNER_PASS);
+      if (_initPass && _initPass.trim()) _memOwnerPass = _initPass.trim();
+      const _initTs = parseInt(localStorage.getItem(STORAGE_KEY_OWNER_PASS_TS) || "0", 10);
+      if (!isNaN(_initTs) && _initTs > 0) _memOwnerPassTs = _initTs;
+    } catch (e) {}
+
+    function setCustomOwnerPasscode(newPass, tsValue) {
+      const clean = String(newPass || "").trim();
+      if (!clean) return;
+      const nextTs = Math.max(Number(tsValue) || Date.now(), _memOwnerPassTs + 1);
+      _memOwnerPass = clean;
+      _memOwnerPassTs = nextTs;
+      try {
+        localStorage.setItem(STORAGE_KEY_OWNER_PASS, clean);
+        localStorage.setItem(STORAGE_KEY_OWNER_PASS_TS, String(nextTs));
+      } catch (e) {}
+    }
+
+    function clearCustomOwnerPasscode(tsValue) {
+      const nextTs = Math.max(Number(tsValue) || Date.now(), _memOwnerPassTs + 1);
+      _memOwnerPass = null;
+      _memOwnerPassTs = nextTs;
+      try {
+        localStorage.removeItem(STORAGE_KEY_OWNER_PASS);
+        localStorage.setItem(STORAGE_KEY_OWNER_PASS_TS, String(nextTs));
+      } catch (e) {}
+    }
+
     function getOwnerPasscode() {
+      if (_memOwnerPass && _memOwnerPass.trim()) return _memOwnerPass.trim();
       try {
         const saved = localStorage.getItem(STORAGE_KEY_OWNER_PASS);
-        if (saved && saved.trim()) return saved.trim();
+        if (saved && saved.trim()) {
+          _memOwnerPass = saved.trim();
+          return _memOwnerPass;
+        }
       } catch (e) {}
       return DEFAULT_OWNER_PASS;
     }
 
     function getOwnerPasscodeTs() {
+      let stored = 0;
       try {
         const ts = parseInt(localStorage.getItem(STORAGE_KEY_OWNER_PASS_TS) || "0", 10);
-        return isNaN(ts) ? 0 : ts;
-      } catch (e) {
-        return 0;
-      }
+        stored = isNaN(ts) ? 0 : ts;
+      } catch (e) {}
+      return Math.max(_memOwnerPassTs, stored);
     }
 
     function hasCustomOwnerPasscode() {
+      if (_memOwnerPass && _memOwnerPass.trim()) return true;
       try {
         const saved = localStorage.getItem(STORAGE_KEY_OWNER_PASS);
-        return Boolean(saved && saved.trim());
-      } catch (e) {
-        return false;
-      }
+        if (saved && saved.trim()) {
+          _memOwnerPass = saved.trim();
+          return true;
+        }
+      } catch (e) {}
+      return false;
     }
 
     function isLegacySeedRecord(rec) {
@@ -11090,6 +11190,7 @@
       userCompany: "",
       userAccount: "",
       isOwnerUnlocked: false,
+      unlockedWithPass: "",
       ownerFilter: "all", // 'all' | 'success' | 'DG Team' | 'Outsource'
       comboStreak: 0,
       maxCombo: 0,
@@ -11211,16 +11312,13 @@
                 delFb.add(data.id);
                 saveDeletedFeedbackIds(delFb);
               } else if (data && data.type === "owner_pass_update" && typeof data.pass === "string") {
-                const incomingTs = Number(data.ts || 0);
+                const incomingTs = Number(data.ts || 0) || msgServerTs;
                 if (incomingTs > getOwnerPasscodeTs()) {
-                  try {
-                    if (data.pass === "__RESET_DEFAULT__") {
-                      localStorage.removeItem(STORAGE_KEY_OWNER_PASS);
-                    } else if (data.pass.trim()) {
-                      localStorage.setItem(STORAGE_KEY_OWNER_PASS, data.pass.trim());
-                    }
-                    localStorage.setItem(STORAGE_KEY_OWNER_PASS_TS, String(incomingTs));
-                  } catch (e) {}
+                  if (data.pass === "__RESET_DEFAULT__") {
+                    clearCustomOwnerPasscode(incomingTs);
+                  } else if (data.pass.trim()) {
+                    setCustomOwnerPasscode(data.pass.trim(), incomingTs);
+                  }
                 }
               }
             }
@@ -11230,6 +11328,16 @@
         quizState.feedbackList = mergeFeedbackEntries(quizState.feedbackList || loadLocalFeedbackList(), incomingFeedback);
         saveLocalFeedbackList(quizState.feedbackList);
         savePublicLeaderboard(quizState.leaderboard);
+        if (quizState.isOwnerUnlocked && (!quizState.unlockedWithPass || !verifyOwnerPasscode(quizState.unlockedWithPass))) {
+          quizState.isOwnerUnlocked = false;
+          quizState.unlockedWithPass = "";
+          if (quizState.userName === "【Mandy】") {
+            quizState.userName = "";
+            quizState.isRegistered = false;
+          }
+          renderPublicLeaderboardTable();
+          renderPersonalStageDetailTable();
+        }
         updateTopUserUI();
         const nowStr = new Date().toLocaleTimeString("zh-HK", { hour12: false });
         updateCloudSyncBadge(`雲端即時同步完成 (${nowStr})`, true);
@@ -11334,18 +11442,14 @@
 
     function verifyOwnerPasscode(inputStr) {
       if (!inputStr) return false;
-      const trimmed = inputStr.trim();
+      const trimmed = String(inputStr).trim();
       if (!trimmed) return false;
       if (hasCustomOwnerPasscode()) {
         const customPass = getOwnerPasscode();
-        return trimmed === customPass || trimmed.toLowerCase() === customPass.toLowerCase();
+        return trimmed === customPass;
       }
       const cleaned = trimmed.replace(/[【】\[\]\s]/g, "").toLowerCase();
       return cleaned === "mandy" || cleaned === "ownermandy" || cleaned === "mandy888" || cleaned === "8888";
-    }
-
-    function checkNameIsMandy(nameStr) {
-      return verifyOwnerPasscode(nameStr);
     }
 
     function isOwnerMandy() {
@@ -11410,11 +11514,7 @@
         }
       }
       if (ownerStatusPerm) {
-        if (isOwnerMandy()) {
-          ownerStatusPerm.classList.remove("hidden");
-        } else {
-          ownerStatusPerm.classList.add("hidden");
-        }
+        ownerStatusPerm.classList.add("hidden");
       }
     }
 
@@ -11470,6 +11570,7 @@
       quizState.userCompany = "";
       quizState.userAccount = "";
       quizState.isOwnerUnlocked = false;
+      quizState.unlockedWithPass = "";
       quizState.pendingFeedbackAfterFinale = false;
       quizState.feedbackSubmittedForSession = false;
       document.querySelectorAll(".reg-dept-btn").forEach((b) => {
@@ -13175,8 +13276,7 @@
           const rawComp = compInp ? compInp.value.trim() : "";
           const rawAcct = acctInp ? acctInp.value.trim() : "";
           const errEl = document.getElementById("reg-error-msg");
-          const isMandyAdmin = checkNameIsMandy(rawName);
-          const isCust = quizState.userDept === "客戶" && !isMandyAdmin;
+          const isCust = quizState.userDept === "客戶";
 
           if (!rawName || !quizState.userDept || (isCust && (!rawComp || !rawAcct))) {
             if (errEl) {
@@ -13187,7 +13287,7 @@
             }
             return;
           }
-          if (!isCust && !isMandyAdmin) {
+          if (!isCust) {
             const isEnglishName = /^[A-Za-z][A-Za-z\s.'-]{1,}$/.test(rawName);
             if (!isEnglishName) {
               if (errEl) {
@@ -13203,7 +13303,8 @@
           quizState.userAccount = isCust ? rawAcct : "";
           quizState.sessionId = "S_" + Date.now() + "_" + Math.random().toString(36).slice(2, 7);
           quizState.isRegistered = true;
-          quizState.isOwnerUnlocked = isMandyAdmin;
+          quizState.isOwnerUnlocked = false;
+          quizState.unlockedWithPass = "";
           playIslandLoginChime();
           updateTopUserUI();
           pullScoresFromCloud();
@@ -13812,13 +13913,6 @@
       const btnRegViewLb = document.getElementById("btn-reg-view-leaderboard");
       if (btnRegViewLb) {
         btnRegViewLb.addEventListener("click", () => {
-          const nameInput = document.getElementById("reg-input-name");
-          if (nameInput && checkNameIsMandy(nameInput.value.trim())) {
-            quizState.userName = nameInput.value.trim();
-            quizState.isRegistered = true;
-            quizState.isOwnerUnlocked = true;
-            updateTopUserUI();
-          }
           document.getElementById("modal-user-registration").classList.add("hidden");
           openQuizScoreboard();
         });
@@ -13828,10 +13922,31 @@
       const inpOwnerPass = document.getElementById("input-owner-passcode");
       const errOwnerPass = document.getElementById("owner-unlock-error");
       if (btnUnlockOwner && inpOwnerPass) {
-        const triggerOwnerUnlock = () => {
+        let _isVerifyingOwnerPass = false;
+        const triggerOwnerUnlock = async () => {
+          if (_isVerifyingOwnerPass) return;
           const val = inpOwnerPass.value.trim();
+          if (!val) {
+            if (errOwnerPass) errOwnerPass.classList.remove("hidden");
+            return;
+          }
+          _isVerifyingOwnerPass = true;
+          const origBtnText = btnUnlockOwner.textContent;
+          btnUnlockOwner.disabled = true;
+          btnUnlockOwner.textContent = "驗證中...";
+          try {
+            await Promise.race([
+              pullScoresFromCloud(),
+              new Promise((resolve) => setTimeout(resolve, 2500))
+            ]);
+          } catch (e) {}
+          btnUnlockOwner.disabled = false;
+          btnUnlockOwner.textContent = origBtnText;
+          _isVerifyingOwnerPass = false;
+
           if (verifyOwnerPasscode(val)) {
             quizState.isOwnerUnlocked = true;
+            quizState.unlockedWithPass = val;
             if (!quizState.userName) {
               quizState.userName = "【Mandy】";
               quizState.isRegistered = true;
@@ -13843,6 +13958,8 @@
             renderPersonalStageDetailTable();
             renderOwnerPassDisplay();
           } else {
+            quizState.isOwnerUnlocked = false;
+            quizState.unlockedWithPass = "";
             if (errOwnerPass) errOwnerPass.classList.remove("hidden");
           }
         };
@@ -13877,18 +13994,16 @@
           return;
         }
         const nowTs = Date.now();
-        try {
-          localStorage.setItem(STORAGE_KEY_OWNER_PASS, newVal);
-          localStorage.setItem(STORAGE_KEY_OWNER_PASS_TS, String(nowTs));
-        } catch (e) {}
+        setCustomOwnerPasscode(newVal, nowTs);
+        quizState.unlockedWithPass = newVal;
         inpNewOwnerPass.value = "";
         isOwnerPassPlainVisible = true;
         const btnToggle = document.getElementById("btn-toggle-show-owner-pass");
         if (btnToggle) btnToggle.textContent = "隱藏密碼";
         renderOwnerPassDisplay();
-        pushOwnerPassToCloud(newVal, nowTs);
+        pushOwnerPassToCloud(newVal, getOwnerPasscodeTs());
         if (msgOwnerPass) {
-          msgOwnerPass.textContent = `島主密碼已成功修改為「${newVal}」，並已同步至雲端與本機！`;
+          msgOwnerPass.textContent = `島主密碼已成功修改為「${newVal}」，舊密碼已立即失效，並已同步至雲端與本機！`;
           msgOwnerPass.className = "text-xs font-extrabold text-emerald-700";
           msgOwnerPass.classList.remove("hidden");
         }
@@ -13906,13 +14021,11 @@
         btnResetDefaultPass.addEventListener("click", () => {
           if (!isOwnerMandy()) return;
           const nowTs = Date.now();
-          try {
-            localStorage.removeItem(STORAGE_KEY_OWNER_PASS);
-            localStorage.setItem(STORAGE_KEY_OWNER_PASS_TS, String(nowTs));
-          } catch (e) {}
+          clearCustomOwnerPasscode(nowTs);
+          quizState.unlockedWithPass = DEFAULT_OWNER_PASS;
           if (inpNewOwnerPass) inpNewOwnerPass.value = "";
           renderOwnerPassDisplay();
-          pushOwnerPassToCloud("__RESET_DEFAULT__", nowTs);
+          pushOwnerPassToCloud("__RESET_DEFAULT__", getOwnerPasscodeTs());
           if (msgOwnerPass) {
             msgOwnerPass.textContent = "已還原為預設島主密碼（Mandy）並同步至雲端";
             msgOwnerPass.className = "text-xs font-extrabold text-[#92400e]";
@@ -13925,7 +14038,8 @@
       if (btnLockOwner) {
         btnLockOwner.addEventListener("click", () => {
           quizState.isOwnerUnlocked = false;
-          if (checkNameIsMandy(quizState.userName)) {
+          quizState.unlockedWithPass = "";
+          if (quizState.userName === "【Mandy】") {
             quizState.userName = "";
             quizState.isRegistered = false;
           }
@@ -14989,7 +15103,6 @@
               <button id="quiz-btn-allow" data-choice="allow" class="quiz-option-btn arcade-bevel-btn w-full p-3 rounded-2xl border-2 border-emerald-600/75 bg-white/95 hover:bg-emerald-50 hover:border-emerald-700 text-left flex items-center justify-between group">
                 <div class="pr-2">
                   <div class="font-black text-xs md:text-sm text-emerald-800 group-hover:text-emerald-950">1. 放行裝櫃</div>
-                  <div class="text-[11px] text-[#3d2530] font-semibold mt-0.5">正常合規貨物或合規 DG 包裹，准許裝入航空貨櫃。</div>
                 </div>
                 <span class="hidden sm:inline-block shrink-0 text-xs font-mono font-black text-emerald-900 px-2.5 py-1 rounded-xl bg-emerald-100 border border-emerald-600/60">1</span>
               </button>
@@ -14997,7 +15110,6 @@
               <button id="quiz-btn-reject" data-choice="reject" class="quiz-option-btn arcade-bevel-btn w-full p-3 rounded-2xl border-2 border-rose-600/75 bg-white/95 hover:bg-rose-50 hover:border-rose-700 text-left flex items-center justify-between group">
                 <div class="pr-2">
                   <div class="font-black text-xs md:text-sm text-rose-800 group-hover:text-rose-950">2. 立即攔截</div>
-                  <div class="text-[11px] text-[#3d2530] font-semibold mt-0.5">包裝開口破損、標籤遮蔽／破損／未填號或禁運危險品，嚴禁裝櫃。</div>
                 </div>
                 <span class="hidden sm:inline-block shrink-0 text-xs font-mono font-black text-rose-900 px-2.5 py-1 rounded-xl bg-rose-100 border border-rose-600/60">2</span>
               </button>
@@ -15005,7 +15117,6 @@
               <button id="quiz-btn-audit" data-choice="audit" class="quiz-option-btn arcade-bevel-btn w-full p-3 rounded-2xl border-2 border-amber-600/80 bg-white/95 hover:bg-amber-50 hover:border-amber-700 text-left flex items-center justify-between group">
                 <div class="pr-2">
                   <div class="font-black text-xs md:text-sm text-[#92400e] group-hover:text-amber-950">3. 特殊核驗</div>
-                  <div class="text-[11px] text-[#3d2530] font-semibold mt-0.5">須由專責人員核對 CAO 貨機專用標籤或 DGD 申報單據後方可放行。</div>
                 </div>
                 <span class="hidden sm:inline-block shrink-0 text-xs font-mono font-black text-amber-950 px-2.5 py-1 rounded-xl bg-amber-100 border border-amber-600/60">3</span>
               </button>
